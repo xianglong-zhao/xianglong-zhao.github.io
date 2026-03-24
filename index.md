@@ -2,15 +2,21 @@
 layout: home
 ---
 
-# 你好，我是赵祥龙 👋
+# 👋 你好，我是赵祥龙
 
-这是我的 GitHub Pages 个人网站。
+> **开发者 | 学习者 | 创造者**
 
-## 关于我
-- 🎓 学生 / 开发者
-- 💻 热爱编程与开源
-- 📍 中国
+欢迎来到我的个人空间。我热衷于探索新技术，解决复杂问题，并构建有用的工具。
 
-## 联系我
-- Email: your-email@example.com
-- GitHub: [xianglong-zhao](https://github.com/xianglong-zhao)
+## 🚀 我正在做什么
+- 💻 **编程**: 专注于 Web 开发与系统架构
+- 📚 **学习**: 持续阅读技术文档与开源项目源码
+- 🛠 **构建**: 正在开发 [项目名称] (可以在这里写你的项目)
+
+## 📬 联系我
+- 📧 Email: [点击给我发邮件](mailto:your-email@example.com)
+- 💼 GitHub: [@xianglong-zhao](https://github.com/xianglong-zhao)
+- 🌏 地点: 中国
+
+---
+*最后更新时间：2026 年*
