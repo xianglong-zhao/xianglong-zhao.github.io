@@ -1,4 +1,132 @@
-theme: slate
-title: 赵祥龙的个人主页
-description: 欢迎来到我的技术博客
-author: 赵祥龙
+# -----------------------------------------------------------------------------
+# 1. 基础站点设置 (Site Settings)
+# -----------------------------------------------------------------------------
+title: "赵祥龙 (Xianglong Zhao)"
+title_separator: "-"
+name: "Xianglong Zhao"
+description: >- 
+  一名热爱人工智能与系统开发的工程师。
+  这里记录我的技术笔记、项目复盘与生活随笔。
+url: "https://xianglong-zhao.github.io"
+baseurl: "" # 如果是用户主页 (username.github.io)，这里留空
+repository: "xianglong-zhao/xianglong-zhao.github.io"
+timezone: "Asia/Shanghai"
+locale: "zh-CN"
+
+# -----------------------------------------------------------------------------
+# 2. 主题设置 (Theme Settings) - 推荐最小错误主题
+# -----------------------------------------------------------------------------
+remote_theme: "mmistakes/minimal-mistakes@4.26.2"
+minimal_mistakes_skin: "default" # 可选: default, air, aqua, contrast, dark, dirt, neon, mint, plum, sunset
+search: true # 开启站内搜索
+
+# -----------------------------------------------------------------------------
+# 3. 作者信息 (Author - 左侧边栏核心)
+# -----------------------------------------------------------------------------
+author:
+  name   : "赵祥龙"
+  avatar : "/assets/images/profile.jpg" # 记得在仓库里建一个 assets/images 文件夹并放入头像
+  bio    : "AI 开发者 | 开源贡献者 | 终身学习者"
+  location: "中国, 上海" # 或者你的城市
+  email  : "your-email@example.com"
+  uri    : "https://xianglong-zhao.github.io"
+  home   : "https://xianglong-zhao.github.io"
+  
+  # 社交链接 (对应截图中的图标)
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/xianglong-zhao"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/你的ID"
+    - label: "Twitter / X"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/你的ID"
+    - label: "Instagram"
+      icon: "fab fa-fw fa-instagram"
+      url: "https://instagram.com/你的ID"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:your-email@example.com"
+    - label: "微信/博客"
+      icon: "fas fa-fw fa-rss-square"
+      url: "/blog"
+
+# -----------------------------------------------------------------------------
+# 4. 页脚设置 (Footer)
+# -----------------------------------------------------------------------------
+footer:
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/xianglong-zhao"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/你的ID"
+
+# -----------------------------------------------------------------------------
+# 5. 内容分类与导航 (Navigation & Categories)
+# -----------------------------------------------------------------------------
+# 顶部导航栏
+navigation:
+  - title: "关于我"
+    url: /about/
+  - title: "博客文章"
+    url: /posts/
+  - title: "项目展示"
+    url: /projects/
+  - title: "分类归档"
+    url: /categories/
+  - title: "标签云"
+    url: /tags/
+
+# 侧边栏导航 (可选，如果不需要可注释掉)
+# sidebar:
+#   - title: "热门文章"
+#     items:
+#       - title: "C++ 性能优化指南"
+#         url: /cpp-optimization/
+#       - title: "我的第一个 AI 模型"
+#         url: /first-ai-model/
+
+# -----------------------------------------------------------------------------
+# 6. 构建与插件 (Build Settings)
+# -----------------------------------------------------------------------------
+markdown: kramdown
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-include-cache
+
+# 默认 Front Matter 设置 (让每篇文章自动继承一些属性)
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true # 显示左侧作者栏
+      read_time: true
+      comments: true # 如果需要评论功能
+      share: true
+      related: true
+      categories: ["Tech"] # 默认分类
+
+# 排除文件
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
