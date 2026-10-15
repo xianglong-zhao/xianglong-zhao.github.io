@@ -8,9 +8,12 @@ description: 赵祥龙的技术笔记、项目复盘与生活随笔。
   <h1 class="page-title">文章<span class="title-period">.</span></h1>
   <p class="page-lead">把想法放在这里，等时间替它们排好顺序。</p>
   {% if site.posts.size > 0 %}
-  <div class="category-filter" role="group" aria-label="按分类筛选文章">
-    <button class="category-filter-button is-active" type="button" data-category-filter="all" aria-pressed="true">全部 <span>{{ site.posts.size }}</span></button>
-    {% for category in site.categories %}<button class="category-filter-button" type="button" data-category-filter="{{ category[0] | escape }}" aria-pressed="false">{{ category[0] | escape }} <span>{{ category[1].size }}</span></button>{% endfor %}
+  <div class="category-filter">
+    <span class="category-filter-label">分类 <span>FILTER</span></span>
+    <div class="category-filter-options" role="group" aria-label="按分类筛选文章">
+      <button class="category-filter-button is-active" type="button" data-category-filter="all" aria-pressed="true">全部 <span>{{ site.posts.size }}</span></button>
+      {% for category in site.categories %}<button class="category-filter-button" type="button" data-category-filter="{{ category[0] | escape }}" aria-pressed="false">{{ category[0] | escape }} <span>{{ category[1].size }}</span></button>{% endfor %}
+    </div>
   </div>
   <p class="filter-result" data-filter-result aria-live="polite">显示全部 {{ site.posts.size }} 篇文章</p>
   {% endif %}
