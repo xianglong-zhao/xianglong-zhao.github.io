@@ -1,0 +1,20 @@
+---
+layout: default
+---
+<main class="inner-page article-page">
+  <a class="back-link" href="{{ '/blog/' | relative_url }}">← 返回文章列表</a>
+  <header class="post-header">
+    <div class="article-meta"><span class="tag-dot"></span> {{ page.category | default: '随笔' | escape }} <span class="meta-divider">/</span> {{ page.date | date: '%Y 年 %-m 月 %-d 日' }}</div>
+    <h1 class="post-title">{{ page.title | escape }}<span class="title-period">.</span></h1>
+    <p class="post-deck">{{ page.description | default: page.excerpt | strip_html | strip_newlines | escape }}</p>
+  </header>
+  <article class="prose">
+    {{ content }}
+    <hr>
+    <p class="post-signature">{{ site.name | escape }} <span>· {{ page.date | date: '%Y.%m' }}</span></p>
+  </article>
+  <nav class="post-next" aria-label="文章导航">
+    <span>继续浏览</span>
+    {% if page.next %}<a href="{{ page.next.url | relative_url }}">下一篇：{{ page.next.title | escape }} <span aria-hidden="true">→</span></a>{% else %}<a href="{{ '/blog/' | relative_url }}">回到所有文章 <span aria-hidden="true">→</span></a>{% endif %}
+  </nav>
+</main>

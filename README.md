@@ -4,13 +4,24 @@
 
 ## 本地预览
 
-用任意静态文件服务器打开仓库目录即可；也可以直接打开 `index.html`。
+页面使用 Jekyll Liquid 模板。安装 Ruby 和 Jekyll 后，在仓库目录运行 `jekyll serve`，再打开终端显示的本地地址。直接打开 HTML 文件不会渲染文章列表模板。
 
 ## 添加文章
 
-1. 复制 `posts/start-here/index.html`，为新文章建立独立目录，例如 `posts/my-note/index.html`。
-2. 修改页面标题、日期、摘要和正文。
-3. 在 `blog/index.html` 添加归档条目，并将首页“最近写下的”链接更新为新文章。
-4. 提交到 `main` 分支。GitHub Pages 会自动更新网站。
+在 `_posts/` 下新建 Markdown 文件，文件名使用 `YYYY-MM-DD-title.md`，例如 `2026-11-02-my-note.md`。添加下面的文章信息后写正文：
 
-站点标题、简介、时区和地址配置位于 `_config.yml`；视觉样式位于 `assets/css/site.css`。
+```yaml
+---
+layout: post
+title: 文章标题
+date: 2026-11-02 09:00:00 +0800
+permalink: /posts/my-note/
+category: 技术
+reading_time: 5
+description: 一句话摘要。
+---
+```
+
+首页会自动显示最新 3 篇，文章归档会按年份和日期自动生成。无需再手动修改首页或归档页。提交到 `main` 分支后，GitHub Pages 会自动构建并发布。
+
+站点标题、简介、时区和地址配置位于 `_config.yml`；通用页面结构位于 `_layouts/`；视觉样式位于 `assets/css/site.css` 和 `assets/css/accessibility.css`。

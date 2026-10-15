@@ -1,67 +1,48 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f4f2ed">
-  <meta name="description" content="赵祥龙的个人博客，记录技术笔记、项目复盘与生活随笔。">
-  <title>赵祥龙 — 写下正在发生的事</title>
-  <link rel="stylesheet" href="/assets/css/site.css">
-</head>
-<body>
-  <div class="site-shell">
-    <header class="site-header">
-      <a class="wordmark" href="/" aria-label="赵祥龙，首页"><span class="wordmark-mark">Z</span><span>赵祥龙<span class="wordmark-en"> / NOTES & WORK</span></span></a>
-      <nav class="main-nav" aria-label="主导航">
-        <a class="active" href="/">首页</a>
-        <a href="/blog/">文章</a>
-        <a href="/about/">关于</a>
-        <a class="nav-github" href="https://github.com/xianglong-zhao" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
-      </nav>
-    </header>
+---
+layout: default
+title: 赵祥龙 — 写下正在发生的事
+description: 赵祥龙的个人博客，记录技术笔记、项目复盘与生活随笔。
+---
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="status-dot"></span> 一处持续生长的个人空间</p>
+      <h1 id="hero-title">把走过的路，<br><em>写成可以回看的记录。</em></h1>
+      <p class="hero-intro">你好，我是赵祥龙。这里收集技术笔记、项目实践里的观察，以及日常生活中的想法。愿每一次记录，都让下一次出发更清晰。</p>
+      <div class="hero-actions">
+        <a class="button button-dark" href="{{ '/blog/' | relative_url }}">读最新文章 <span aria-hidden="true">↗</span></a>
+        <a class="text-link" href="{{ '/about/' | relative_url }}">认识我 <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <aside class="hero-note" aria-label="博客主题">
+      <div class="note-topline"><span>FIELD NOTES</span><span>001 — ∞</span></div>
+      <div class="orbit-art" aria-hidden="true"><span class="orbit orbit-one"></span><span class="orbit orbit-two"></span><span class="orbit orbit-three"></span><span class="orbit-core">写</span><span class="orbit-star">✳</span><span class="orbit-dot"></span></div>
+      <p class="note-caption">在技术与日常之间，<br>留下真实、具体的思考。</p>
+      <div class="note-tags"><span>技术</span><span>实践</span><span>生活</span></div>
+    </aside>
+    <div class="hero-index" aria-hidden="true">PERSONAL BLOG · 2026</div>
+  </section>
 
-    <main>
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow"><span class="status-dot"></span> 一处持续生长的个人空间</p>
-          <h1 id="hero-title">把走过的路，<br><em>写成可以回看的记录。</em></h1>
-          <p class="hero-intro">你好，我是赵祥龙。这里收集技术笔记、项目实践里的观察，以及日常生活中的想法。愿每一次记录，都让下一次出发更清晰。</p>
-          <div class="hero-actions">
-            <a class="button button-dark" href="/blog/">读最新文章 <span aria-hidden="true">↗</span></a>
-            <a class="text-link" href="/about/">认识我 <span aria-hidden="true">→</span></a>
-          </div>
-        </div>
-        <aside class="hero-note" aria-label="博客主题">
-          <div class="note-topline"><span>FIELD NOTES</span><span>001 — ∞</span></div>
-          <div class="orbit-art" aria-hidden="true"><span class="orbit orbit-one"></span><span class="orbit orbit-two"></span><span class="orbit orbit-three"></span><span class="orbit-core">写</span><span class="orbit-star">✳</span><span class="orbit-dot"></span></div>
-          <p class="note-caption">在技术与日常之间，<br>留下真实、具体的思考。</p>
-          <div class="note-tags"><span>技术</span><span>实践</span><span>生活</span></div>
-        </aside>
-        <div class="hero-index" aria-hidden="true">PERSONAL BLOG · 2026</div>
-      </section>
+  <section class="content-section latest-section" aria-labelledby="latest-title">
+    <div class="section-heading">
+      <div><p class="eyebrow">RECENT NOTES <span class="eyebrow-line"></span></p><h2 id="latest-title">最近写下的</h2></div>
+      <a class="text-link" href="{{ '/blog/' | relative_url }}">全部文章 <span aria-hidden="true">→</span></a>
+    </div>
+    {% assign recent_posts = site.posts | slice: 0, 3 %}
+    {% for post in recent_posts %}
+    <a class="article-card" href="{{ post.url | relative_url }}">
+      <div class="article-date"><span class="date-day">{{ post.date | date: '%d' }}</span><span class="date-month">{{ post.date | date: '%b · %Y' | upcase }}</span></div>
+      <div class="article-main"><div class="article-meta"><span class="tag-dot"></span> {{ post.category | default: '随笔' | escape }} <span class="meta-divider">/</span> {{ post.reading_time | default: 3 }} 分钟阅读</div><h3>{{ post.title | escape }}</h3><p>{{ post.description | default: post.excerpt | strip_html | strip_newlines | escape }}</p></div>
+      <span class="article-arrow" aria-hidden="true">↗</span>
+    </a>
+    {% endfor %}
+    {% if site.posts.size == 0 %}<div class="empty-note"><span class="empty-symbol">＋</span><p>新的记录正在路上。<span> 慢慢写，认真写。</span></p></div>{% endif %}
+  </section>
 
-      <section class="content-section latest-section" aria-labelledby="latest-title">
-        <div class="section-heading">
-          <div><p class="eyebrow">RECENT NOTES <span class="eyebrow-line"></span></p><h2 id="latest-title">最近写下的</h2></div>
-          <a class="text-link" href="/blog/">全部文章 <span aria-hidden="true">→</span></a>
-        </div>
-        <a class="article-card" href="/posts/start-here/">
-          <div class="article-date"><span class="date-day">15</span><span class="date-month">OCT · 2026</span></div>
-          <div class="article-main"><div class="article-meta"><span class="tag-dot"></span> 随笔 <span class="meta-divider">/</span> 3 分钟阅读</div><h3>从这里开始</h3><p>给这个小小的网络角落写下第一段话，也写下我想用它记录什么。</p></div>
-          <span class="article-arrow" aria-hidden="true">↗</span>
-        </a>
-        <div class="empty-note"><span class="empty-symbol">＋</span><p>新的记录正在路上。<span> 慢慢写，认真写。</span></p></div>
-      </section>
-
-      <section class="manifesto" aria-label="写作主题">
-        <p class="eyebrow">A SMALL PROMISE</p>
-        <p class="manifesto-text">不急着给每件事下结论。<br><span>先观察，再动手，最后把过程写清楚。</span></p>
-        <a href="/about/" class="manifesto-link">关于这个博客 <span aria-hidden="true">↗</span></a>
-        <span class="manifesto-number" aria-hidden="true">01</span>
-      </section>
-    </main>
-
-    <footer class="site-footer"><a class="footer-mark" href="/">赵祥龙<span> · 个人博客</span></a><span>用好奇心记录，用时间慢慢整理。</span><a href="https://github.com/xianglong-zhao" target="_blank" rel="noreferrer">GITHUB ↗</a></footer>
-  </div>
-</body>
-</html>
+  <section class="manifesto" aria-label="写作主题">
+    <p class="eyebrow">A SMALL PROMISE</p>
+    <p class="manifesto-text">不急着给每件事下结论。<br><span>先观察，再动手，最后把过程写清楚。</span></p>
+    <a href="{{ '/about/' | relative_url }}" class="manifesto-link">关于这个博客 <span aria-hidden="true">↗</span></a>
+    <span class="manifesto-number" aria-hidden="true">01</span>
+  </section>
+</main>
