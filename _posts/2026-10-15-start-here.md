@@ -3,7 +3,7 @@ layout: post
 title: 从这里开始
 date: 2026-10-15 00:00:00 +0800
 permalink: /posts/start-here/
-category: 随笔
+categories: [随笔]
 reading_time: 3
 description: 给这个小小的网络角落写下第一段话，也写下我想用它记录什么。
 ---

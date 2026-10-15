@@ -16,12 +16,12 @@ layout: post
 title: 文章标题
 date: 2026-11-02 09:00:00 +0800
 permalink: /posts/my-note/
-category: 技术
+categories: [技术, 实践]
 reading_time: 5
 description: 一句话摘要。
 ---
 ```
 
-首页会自动显示最新 3 篇，文章归档会按年份和日期自动生成。无需再手动修改首页或归档页。提交到 `main` 分支后，GitHub Pages 会自动构建并发布。
+`categories` 可以填一个或多个自定义分类；文章归档会自动生成分类筛选项和每类文章数，文章页也会显示分类。首页自动显示最新 3 篇，归档按年份和日期生成，无需手动修改页面。提交到 `main` 分支后，GitHub Pages 会自动构建并发布。
 
 站点标题、简介、时区和地址配置位于 `_config.yml`；通用页面结构位于 `_layouts/`；视觉样式位于 `assets/css/site.css` 和 `assets/css/accessibility.css`。

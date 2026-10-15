@@ -60,3 +60,59 @@
     animation-iteration-count: 1 !important;
   }
 }
+
+.category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 37px;
+}
+
+.category-filter-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: #62645a;
+  font: 12px var(--sans);
+  cursor: pointer;
+  transition: background-color .18s, border-color .18s, color .18s;
+}
+
+.category-filter-button span {
+  color: #85867c;
+  font: 10px var(--mono);
+}
+
+.category-filter-button:hover,
+.category-filter-button.is-active {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.category-filter-button.is-active span,
+.category-filter-button:hover span {
+  color: #d9dec9;
+}
+
+.filter-result {
+  margin: 13px 0 0;
+  color: #66675e;
+  font-size: 11px;
+}
+
+.filter-empty {
+  margin: 24px 0;
+  color: #66675e;
+  font-size: 13px;
+}
+
+.article-card[hidden],
+.archive-group[hidden],
+.filter-empty[hidden] {
+  display: none;
+}

@@ -7,18 +7,27 @@ description: 赵祥龙的技术笔记、项目复盘与生活随笔。
   <div class="page-kicker"><span class="eyebrow">THE JOURNAL</span><span class="page-count">{{ site.posts.size }} 篇记录</span></div>
   <h1 class="page-title">文章<span class="title-period">.</span></h1>
   <p class="page-lead">把想法放在这里，等时间替它们排好顺序。</p>
+  {% if site.posts.size > 0 %}
+  <div class="category-filter" role="group" aria-label="按分类筛选文章">
+    <button class="category-filter-button is-active" type="button" data-category-filter="all" aria-pressed="true">全部 <span>{{ site.posts.size }}</span></button>
+    {% for category in site.categories %}<button class="category-filter-button" type="button" data-category-filter="{{ category[0] | escape }}" aria-pressed="false">{{ category[0] | escape }} <span>{{ category[1].size }}</span></button>{% endfor %}
+  </div>
+  <p class="filter-result" data-filter-result aria-live="polite">显示全部 {{ site.posts.size }} 篇文章</p>
+  {% endif %}
   {% assign posts_by_year = site.posts | group_by_exp: 'post', "post.date | date: '%Y'" %}
   {% for year in posts_by_year %}
   <section class="archive-group" aria-labelledby="archive-{{ year.name }}">
-    <h2 class="archive-year" id="archive-{{ year.name }}">{{ year.name }} <span>{{ year.items.size }} 篇记录</span></h2>
+    <h2 class="archive-year" id="archive-{{ year.name }}">{{ year.name }} <span data-year-count>{{ year.items.size }} 篇记录</span></h2>
     {% for post in year.items %}
-    <a class="article-card" href="{{ post.url | relative_url }}">
+    {% assign post_categories = post.categories %}{% if post_categories == nil or post_categories.size == 0 %}{% assign post_categories = post.category | default: '随笔' | split: ',' %}{% endif %}
+    <a class="article-card" href="{{ post.url | relative_url }}" data-post-categories="{{ post_categories | join: '|' | escape }}">
       <div class="article-date"><span class="date-day">{{ post.date | date: '%d' }}</span><span class="date-month">{{ post.date | date: '%b · %Y' | upcase }}</span></div>
-      <div class="article-main"><div class="article-meta"><span class="tag-dot"></span> {{ post.category | default: '随笔' | escape }} <span class="meta-divider">/</span> {{ post.reading_time | default: 3 }} 分钟阅读</div><h3>{{ post.title | escape }}</h3><p>{{ post.description | default: post.excerpt | strip_html | strip_newlines | escape }}</p></div>
+      <div class="article-main"><div class="article-meta"><span class="tag-dot"></span> {% for category_name in post_categories %}{% unless forloop.first %}、{% endunless %}{{ category_name | strip | escape }}{% endfor %} <span class="meta-divider">/</span> {{ post.reading_time | default: 3 }} 分钟阅读</div><h3>{{ post.title | escape }}</h3><p>{{ post.description | default: post.excerpt | strip_html | strip_newlines | escape }}</p></div>
       <span class="article-arrow" aria-hidden="true">↗</span>
     </a>
     {% endfor %}
   </section>
   {% endfor %}
+  {% if site.posts.size > 0 %}<p class="filter-empty" data-filter-empty hidden>这个分类下还没有文章。</p><script src="{{ '/assets/js/category-filter.js' | relative_url }}" defer></script>{% endif %}
   {% if site.posts.size == 0 %}<p class="archive-footnote">第一篇文章正在准备中，欢迎过段时间再来看看。</p>{% else %}<p class="archive-footnote">每篇文章都是一次阶段性的记录；如果后来有了新理解，我会回来补上。</p>{% endif %}
 </main>

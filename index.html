@@ -30,9 +30,10 @@ description: 赵祥龙的个人博客，记录技术笔记、项目复盘与生�
     </div>
     {% assign recent_posts = site.posts | slice: 0, 3 %}
     {% for post in recent_posts %}
+    {% assign post_categories = post.categories %}{% if post_categories == nil or post_categories.size == 0 %}{% assign post_categories = post.category | default: '随笔' | split: ',' %}{% endif %}
     <a class="article-card" href="{{ post.url | relative_url }}">
       <div class="article-date"><span class="date-day">{{ post.date | date: '%d' }}</span><span class="date-month">{{ post.date | date: '%b · %Y' | upcase }}</span></div>
-      <div class="article-main"><div class="article-meta"><span class="tag-dot"></span> {{ post.category | default: '随笔' | escape }} <span class="meta-divider">/</span> {{ post.reading_time | default: 3 }} 分钟阅读</div><h3>{{ post.title | escape }}</h3><p>{{ post.description | default: post.excerpt | strip_html | strip_newlines | escape }}</p></div>
+      <div class="article-main"><div class="article-meta"><span class="tag-dot"></span> {% for category_name in post_categories %}{% unless forloop.first %}、{% endunless %}{{ category_name | strip | escape }}{% endfor %} <span class="meta-divider">/</span> {{ post.reading_time | default: 3 }} 分钟阅读</div><h3>{{ post.title | escape }}</h3><p>{{ post.description | default: post.excerpt | strip_html | strip_newlines | escape }}</p></div>
       <span class="article-arrow" aria-hidden="true">↗</span>
     </a>
     {% endfor %}
